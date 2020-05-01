@@ -5,7 +5,6 @@ require(tidyverse)
 require(LaplacesDemon)
 require(MASS)
 
-setwd("C:/Users/Thomas/Documents/Master BDS/Masterthese/")
 
 # Loading data
 data <- read.csv("PFS HR Khan et al..csv", header = TRUE, sep = ";")
