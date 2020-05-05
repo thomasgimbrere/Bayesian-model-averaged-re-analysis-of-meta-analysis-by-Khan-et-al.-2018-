@@ -5,6 +5,7 @@ require(tidyverse)
 require(LaplacesDemon)
 require(MASS)
 
+setwd("C:/Users/Thomas/Documents/Master BDS/Masterthese/")
 
 # Loading data
 data <- read.csv("PFS HR Khan et al..csv", header = TRUE, sep = ";")
@@ -38,7 +39,7 @@ inverse_gamma <- prior("invgamma", c(shape = 1, scale = 0.15))
 
 # Generate samples from log t-distr with given precision using LaplacesDemon
 set.seed(123)
-distr <- rstp(n = 1e4, mu = -0.60, tau = (2.61)^2, nu = 5)
+distr <- rstp(n = 1e4, mu = -0.88, tau = (2.55)^2, nu = 5)
 
 # Transform the generated samples from log(tau) ^2 to tau
 e_distr <- exp(distr)
@@ -145,13 +146,13 @@ plot(informed_tau, from = 0, to = 2)
 
 par(mfrow=c(2,2))
 # Zero-centered x informed
-plot_posterior(mb_zeroHR_informed, main = " Zero-centered Effect Size x Rhodes et al. (2015)", sub = "median = -0.152 [-0.476, 0.176]")
+plot_posterior(mb_zeroHR_informed, main = " Zero-centered Effect Size x Rhodes et al. (2015)", sub = "median = -0.160 [-0.440, 0.165]")
 
 # Zero-centered x inverse gamma
 plot_posterior(mb_zeroHR_inverse, main = "Zero-centered Effect Size x Inverse Gamma", sub = "median = -0.166 [-0.347, -0.013]")
 
 # Avelumab informed x informed
-plot_posterior(mb_informed_informed, main = "Avelumab Informed Effect Size x Rhodes et al. (2015)", sub = "median = -0.132 [-0.271, 0.015]")
+plot_posterior(mb_informed_informed, main = "Avelumab Informed Effect Size x Rhodes et al. (2015)", sub = "median = -0.131 [-0.273, 0.028]")
 
 # Avelumab informed x inverse gamma
 plot_posterior(mb_informed_inverse, main = "Avelumab Informed Effect Size x Inverse Gamma", sub = "median = -0.144 [-0.267, -0.019]")
